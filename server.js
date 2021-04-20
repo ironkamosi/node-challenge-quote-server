@@ -30,18 +30,22 @@ app.get("/quotes/random", function (request, response) {
 });
 
 app.get("/quotes/search", function (req, res) {
-  let term = req.query.term;
+  let term = req.query.term.toLowerCase();
   res.send(searchQuery(term,quotes));
 });
 
 function searchQuery(word, quotes) {
   let filteredResult = quotes.filter(function (element) {
-    if (element.quote.includes(word)) {
+    if (
+      element.quote.toLowerCase().includes(word) ||
+      element.author.toLowerCase().includes(word)
+    ) {
       return true;
     }
   });
-  return filteredResult;ray(myContactsArray)
-//
+  return  filteredResult;
+
+
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
