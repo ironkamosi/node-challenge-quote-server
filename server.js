@@ -12,10 +12,15 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("hi");
-});
 
+//START OF YOUR CODE...
+app.get("/", function (request, response) {
+  const message = `<h1> Hello welcome to my quotes api</h1>
+  <h2>List of content</h2>
+  `;
+  response.send(message);
+});
+//l
 app.get("/quotes", function (request, response) {
   response.send(quotes);
 });
@@ -24,16 +29,18 @@ app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 });
 
-// app.get("/message", function (request, response) {
-//   response.send("hola Michael");
-// });
-//START OF YOUR CODE...
+app.get("/quotes/search", function (req, res) {
+  let term = req.query.term;
+  res.send(searchQuery(term,quotes));
+});
 
-//...END OF YOUR CODE
-
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
+function searchQuery(word, quotes) {
+  let filteredResult = quotes.filter(function (element) {
+    if (element.quote.includes(word)) {
+      return true;
+    }
+  });
+  return filteredResult;ray(myContactsArray)
 //
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -41,7 +48,14 @@ function pickFromArray(arr) {
 
 //Start our server so that it listens for HTTP requests!
 // const listener = app.listen(process.env.PORT, function () {
-//   console.log("Your app is listening on port " + listener.address().port);
+//   console.log("Your app is l
+}
+
+//...END OF YOUR CODE
+
+//You can use this function to pick one element at random from a given array
+//example: pickFromArray([1,2,3,4]), or
+//example: pickFromAristening on port " + listener.address().port);
 // });
 
 const PORT = 3001;
