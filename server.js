@@ -3,12 +3,12 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
-const cors = require("cors")
+const cors = require("cors");
 const app = express();
 //load the quotes JSON
 const quotes = require("./quotes.json");
 app.use(express.static("quotes-frontend"));
-app.use(cors())
+app.use(cors());
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
@@ -16,6 +16,7 @@ app.use(cors())
 
 //START OF YOUR CODE...
 app.get("/", function (request, response) {
+  try {
   const message = `<h1> Hello welcome to my inspirational quotes api</h1>
   <h2>List of contents</h2>
   <ul>
@@ -25,27 +26,47 @@ app.get("/", function (request, response) {
   <li>/quotes/random - returns ONE of the quotes, picked differently at random each time it is requested.</li>
   </ul>
   `;
-  response.send(message);
+  response.send(message);  
+  } catch (error) {
+        console.log(error.message);
+  }
+  
 });
 //l
 app.get("/quotes", function (request, response) {
-  response.send(quotes);
+  try {
+      response.send(quotes);
+  } catch (error) {
+    console.log(error.message)
+  }
 });
 
 app.get("/quotes/random", function (request, response) {
-  response.send(pickFromArray(quotes));
+  try {
+      response.send(pickFromArray(quotes));
+  } catch (error) {
+    console.log(error.message)
+  }
 });
 
 app.get("/quotes/search", function (req, res) {
+  try {
   let term = req.query.term.toLowerCase();
-  res.send(searchQuery(term, quotes));
+  res.send(searchQuery(term, quotes)); 
+  } catch(error){
+    console.log(error.message)
+}
 });
 
 app.get("/echo", function (req, res) {
-  let term = req.query.term.toLowerCase();
-
-  res.send(`Your term is ${term}`);
+  try {
+    let term = req.query.term.toLowerCase();
+    res.send(`Your term is ${term}`);
+  } catch (error) {
+    console.log(error.message);
+  }
 });
+
 function searchQuery(word, quotes) {
   let filteredResult = quotes.filter(function (element) {
     if (
