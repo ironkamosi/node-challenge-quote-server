@@ -28,7 +28,8 @@ app.get("/", function (request, response) {
   `;
   response.send(message);  
   } catch (error) {
-        console.log(error.message);
+    console.log(error.message);
+    res.sendStatus(400);
   }
   
 });
@@ -38,6 +39,7 @@ app.get("/quotes", function (request, response) {
       response.send(quotes);
   } catch (error) {
     console.log(error.message)
+    res.sendStatus(400);
   }
 });
 
@@ -46,6 +48,7 @@ app.get("/quotes/random", function (request, response) {
       response.send(pickFromArray(quotes));
   } catch (error) {
     console.log(error.message)
+    res.sendStatus(400);
   }
 });
 
@@ -55,7 +58,8 @@ app.get("/quotes/search", function (req, res) {
   res.send(searchQuery(term, quotes)); 
   } catch(error){
     console.log(error.message)
-}
+   res.sendStatus(400)
+  }
 });
 
 app.get("/echo", function (req, res) {
@@ -64,6 +68,7 @@ app.get("/echo", function (req, res) {
     res.send(`Your term is ${term}`);
   } catch (error) {
     console.log(error.message);
+    res.sendStatus(400);
   }
 });
 

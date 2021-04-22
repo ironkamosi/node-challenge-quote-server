@@ -1,7 +1,6 @@
-import "./App.css";
 import React, { useState, useEffect } from "react";
 
-function App() {
+const RandomView = () => {
   const [quotesData, setQuotesData] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3001/quotes/random")
@@ -14,13 +13,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <header className="App-header">
-          <p>{quotesData.quote}</p>
-          <h5>{quotesData.author}</h5>
-        </header>
+        <blockquote>{quotesData.quote}</blockquote>
+        <cite>{quotesData.author}</cite>
       </header>
     </div>
   );
-}
+};
 
-export default App;
+export default RandomView;
