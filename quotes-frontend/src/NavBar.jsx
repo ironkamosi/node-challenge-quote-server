@@ -10,9 +10,7 @@ const NavBar = ({ data, onSearch }) => {
       <Navbar.Brand href="#home">Inspirational-quotes</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-        </Nav>
+        <Nav className="mr-auto"></Nav>
 
         <Form inline className="searchBar">
           <FormControl
@@ -35,12 +33,9 @@ const NavBar = ({ data, onSearch }) => {
         </Form>
 
         <div className="button-group">
-          <Button variant="primary">Backwards</Button>{" "}
-          <Button variant="primary">Forward</Button>{" "}
           <Button variant="success" onClick={data}>
             Random
           </Button>{" "}
-          <Button variant="dark">All</Button>{" "}
         </div>
       </Navbar.Collapse>
     </Navbar>
