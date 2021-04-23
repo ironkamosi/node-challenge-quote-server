@@ -34,18 +34,18 @@ app.get("/", function (request, response) {
   
 });
 //l
-app.get("/quotes", function (request, response) {
+app.get("/quotes", function (req, res) {
   try {
-      response.send(quotes);
+      res.send(quotes);
   } catch (error) {
     console.log(error.message)
     res.sendStatus(400);
   }
 });
 
-app.get("/quotes/random", function (request, response) {
+app.get("/quotes/random", function (req, res) {
   try {
-      response.send(pickFromArray(quotes));
+      res.send(pickFromArray(quotes));
   } catch (error) {
     console.log(error.message)
     res.sendStatus(400);
