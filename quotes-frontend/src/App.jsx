@@ -28,19 +28,19 @@ function App() {
       <NavBar data={handleClick} onSearch={setSearchTerm} />
       <header className="App-header">
         {Array.isArray(quotesData) ? (
-          quotesData.map((quote) => {
+          quotesData.map((quote, index) => {
             return (
-              <>
-                <blockquote>{quote.quote}</blockquote>
+              <div key={"cite"+index}>
+                <blockquote >{quote.quote}</blockquote>
                 <cite>{quote.author}</cite>
-              </>
+              </div>
             );
           })
         ) : (
-          <>
+          <div>
             <blockquote>{quotesData.quote}</blockquote>
             <cite>{quotesData.author}</cite>
-          </>
+          </div>
         )}
       </header>
     </div>
