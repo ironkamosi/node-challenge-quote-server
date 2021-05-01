@@ -29,7 +29,7 @@ app.get("/", function (request, response) {
   response.send(message);  
   } catch (error) {
     console.log(error.message);
-    res.sendStatus(400);
+    response.sendStatus(400);
   }
   
 });
@@ -97,5 +97,7 @@ function pickFromArray(arr) {
 //example: pickFromAristening on port " + listener.address().port);
 // });
 
-const PORT = 3001;
+const PORT =  process.env.PORT ||3001;
 app.listen(PORT, () => console.log(`Your app is listening ...${PORT}`));
+
+//3001;
