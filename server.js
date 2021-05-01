@@ -17,7 +17,7 @@ app.use(cors());
 //START OF YOUR CODE...
 app.get("/", function (request, response) {
   try {
-  const message = `<h1> Hello welcome to my inspirational quotes api</h1>
+    const message = `<h1> Hello welcome to my inspirational quotes api</h1>
   <h2>List of contents</h2>
   <ul>
   <h3>Level 1 access the routes for the quotes<h3/>
@@ -26,39 +26,38 @@ app.get("/", function (request, response) {
   <li>/quotes/random - returns ONE of the quotes, picked differently at random each time it is requested.</li>
   </ul>
   `;
-  response.send(message);  
+    response.send(message);
   } catch (error) {
     console.log(error.message);
     response.sendStatus(400);
   }
-  
 });
 //l
 app.get("/quotes", function (req, res) {
   try {
-      res.send(quotes);
+    res.send(quotes);
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
     res.sendStatus(400);
   }
 });
 
 app.get("/quotes/random", function (req, res) {
   try {
-      res.send(pickFromArray(quotes));
+    res.send(pickFromArray(quotes));
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
     res.sendStatus(400);
   }
 });
 
 app.get("/quotes/search", function (req, res) {
   try {
-  let term = req.query.term.toLowerCase();
-  res.send(searchQuery(term, quotes)); 
-  } catch(error){
-    console.log(error.message)
-   res.sendStatus(400)
+    let term = req.query.term.toLowerCase();
+    res.send(searchQuery(term, quotes));
+  } catch (error) {
+    console.log(error.message);
+    res.sendStatus(400);
   }
 });
 
@@ -97,7 +96,7 @@ function pickFromArray(arr) {
 //example: pickFromAristening on port " + listener.address().port);
 // });
 
-const PORT =  process.env.PORT ||3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Your app is listening ...${PORT}`));
 
 //3001;
